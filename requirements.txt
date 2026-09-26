@@ -1,6 +1,10 @@
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
-psycopg[binary]==3.2.3
+# psycopg[binary] anterior a 3.3.6 no publica rueda para Python 3.14+ (la serie
+# 3.2.x se corta en cp313), asi que en una maquina cuyo interprete moderno es 3.14
+# el `make setup` moria con «No matching distribution found for psycopg-binary».
+# 3.3.6 trae ruedas hasta cp314/cp315 y su API es la misma que usa este proyecto.
+psycopg[binary]>=3.3.6
 httpx==0.28.1
 pydantic==2.10.4
 pydantic-settings==2.7.0
